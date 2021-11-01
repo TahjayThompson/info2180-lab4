@@ -1,9 +1,7 @@
 window.onload = function() {
 
   const  Btn = document.querySelector('button');
-  const  name = document.querySelector('#name');
-  const  alias = document.querySelector('#alias');
-  const  bio = document.querySelector('#bio');
+  const  name = document.querySelector('#text	');
   const httpReq= new XMLHttpRequest();
 
 
@@ -26,7 +24,7 @@ window.onload = function() {
     if (httpReq.readyState === XMLHttpRequest.DONE) {
       if (httpReq.status === 200) {
         const res = httpReq.responseText;
-
+		name.innerHTML=res;
 		console.log(res);
 		alert(res)
       } else {

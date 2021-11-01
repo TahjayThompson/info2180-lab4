@@ -66,24 +66,32 @@ $superheroes = [
 ?>
 
 
+
+
+
+
+
+
+
 $req = trim(filter_var(htmlspecialchars($_GET["query"]), FILTER_SANITIZE_STRING));
 $send
+
 <?php foreach ($superheroes as $superhero): ?>
 
 
 <?php
 if(isset($req) && !empty($req) ){
-	for ($i=0;$i<=count($superhero);$i++){
-		if ( $req == $superhero[1] || $req == $superhero[2]){
-			$send = $superhero[$i];
-			break;
-		 }
-		else{
-			$send = "Superhero not found";
-			break;
-		}
+	if ( $req === $superhero['alias'] || $req === $superhero['name'] ){
+		$send ="<h3 id="alias"> {$superhero['alias']} </h3>	<h4 id="name"> A.K.A {$superhero['name']} </h4>  <p id="bio"> {$superhero['biography']} </p>";
+		echo $send ;
+
 	}
-}?>
+	else {
+		$send = "<div>Superhero not found</div>";
+		echo $send;
+
+	}
+<?php}?>
 
 else{
 	<ul>
@@ -95,12 +103,6 @@ else{
 
 <?php endforeach; ?>
 
-
- <?php
-for ($i=0;$i<=count($superheroes);$i++){
-  echo  $superheroes[$i];
-}
-?> 
 
 
 
