@@ -65,15 +65,55 @@ $superheroes = [
 
 ?>
 
-<html>
-    <body>
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
 
-    </body>
-</html>
+$req = trim(filter_var(htmlspecialchars($_GET["query"]), FILTER_SANITIZE_STRING));
+$send
+<?php foreach ($superheroes as $superhero): ?>
+
+
+<?php
+if(isset($req) && !empty($req) ){
+	for ($i=0;$i<=count($superhero);$i++){
+		if ( $req == $superhero[1] || $req == $superhero[2]){
+			$send = $superhero[$i];
+			break;
+		 }
+		else{
+			$send = "Superhero not found";
+			break;
+		}
+	}
+}?>
+
+else{
+	<ul>
+		<?php foreach ($superheroes as $superhero): ?>
+		  <li><?= $superhero['alias']; ?></li>
+		<?php endforeach; ?>
+	</ul>
+}?>
+
+<?php endforeach; ?>
+
+
+ <?php
+for ($i=0;$i<=count($superheroes);$i++){
+  echo  $superheroes[$i];
+}
+?> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
