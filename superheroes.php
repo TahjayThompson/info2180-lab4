@@ -72,9 +72,11 @@ $superheroes = [
 
 
 
-
+<?php 
 $req = trim(filter_var(htmlspecialchars($_GET["query"]), FILTER_SANITIZE_STRING));
-$send
+$send ="";
+?>
+
 
 <?php foreach ($superheroes as $superhero): ?>
 
@@ -82,7 +84,7 @@ $send
 <?php
 if(isset($req) && !empty($req) ){
 	if ( $req === $superhero['alias'] || $req === $superhero['name'] ){
-		$send ="<h3 id="alias"> {$superhero['alias']} </h3>	<h4 id="name"> A.K.A {$superhero['name']} </h4>  <p id="bio"> {$superhero['biography']} </p>";
+		$send ="<h3 id='alias'> {$superhero['alias']} </h3>	<h4 id='name'> A.K.A {$superhero['name']} </h4>  <p id='bio'> {$superhero['biography']} </p>";
 		echo $send ;
 
 	}
@@ -91,15 +93,15 @@ if(isset($req) && !empty($req) ){
 		echo $send;
 
 	}
-<?php}?>
+}?>
 
-else{
+<?php else{?>
 	<ul>
 		<?php foreach ($superheroes as $superhero): ?>
 		  <li><?= $superhero['alias']; ?></li>
 		<?php endforeach; ?>
 	</ul>
-}?>
+<?php }?>
 
 <?php endforeach; ?>
 
