@@ -25,8 +25,6 @@ window.onload = function() {
       if (httpReq.status === 200) {
         const res = httpReq.responseText;
 		name.innerHTML=res;
-		console.log(res);
-		alert(res)
       } else {
         alert('There was a problem with the request.');
       }
